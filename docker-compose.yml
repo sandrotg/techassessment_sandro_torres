@@ -12,7 +12,7 @@ services:
       POSTGRES_DB: techassessment
 
     ports:
-      - "5432:5432"
+      - "5434:5432"
 
     volumes:
       - postgres_data:/var/lib/postgresql/data
@@ -24,13 +24,15 @@ services:
 
     container_name: techassessment_backend
 
-    restart: always
+    restart: "no"
 
     depends_on:
       - db
 
     environment:
       DATABASE_URL: postgresql://postgres:postgres@db:5432/techassessment
+      JWT_SECRET: "key2106"
+      JWT_EXPIRES_IN: "1d"
 
     ports:
       - "3000:3000"
