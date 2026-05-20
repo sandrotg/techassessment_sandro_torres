@@ -21,10 +21,8 @@ import { FindAllTasksByUserIdUseCase } from "src/application/use-cases/find-task
 import { CreateTaskDto } from "src/application/dto/create-task.dto";
 import { UpdateTaskDto } from "src/application/dto/update-task.dto";
 import { JwtAuthGuard } from "src/infrastructure/auth/jwt-auth.guard";
-import { ApiBearerAuth } from "@nestjs/swagger";
 
 @UseGuards(JwtAuthGuard)
-@ApiBearerAuth('JWT-auth')
 @Controller("tasks")
 export class TasksController {
   constructor(

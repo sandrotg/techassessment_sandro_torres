@@ -13,14 +13,12 @@ export class JwtStrategy extends PassportStrategy(
 ) {
   constructor() {
     super({
-      jwtFromRequest:
-        ExtractJwt.fromAuthHeaderAsBearerToken(),
-
+      jwtFromRequest: (req) => {
+        console.log(req.headers.authorization);
+        return ExtractJwt.fromAuthHeaderAsBearerToken()(req);
+      },
       ignoreExpiration: false,
-
-      secretOrKey:
-        process.env.JWT_SECRET ||
-        "super-secret-key",
+      secretOrKey: process.env.JWT_SECRET || "key2106",
     });
   }
 
